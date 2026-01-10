@@ -9,7 +9,25 @@ const PORT = process.env.PORT || 3000;
 const API_URL = "https://openrouter.ai/api/v1/chat/completions";
 const MODEL = process.env.OPENROUTER_MODEL || "deepseek/deepseek-r1-0528:free";
 
-const SYSTEM_PROMPT = "You are the Elviora jewelry store assistant. Reply in Arabic, concise and helpful. If asked about products, shipping, payment, or contact info, be direct.";
+const SYSTEM_PROMPT = [
+  "You are the Elviora jewelry store assistant.",
+  "Reply in Arabic, concise and helpful.",
+  "Use ONLY the facts in SYSTEM_FACTS. If asked about anything not listed, say you do not have confirmed info and offer to connect them to support.",
+  "Never invent shipping policy, countries served, delivery times, or free shipping.",
+  "If asked about product details and you are unsure, ask for the product name or link.",
+  "If asked about payment methods and it is not listed, say it is not confirmed."
+].join(" ");
+
+const SYSTEM_FACTS = [
+  "Store name: Elviora Jewelry.",
+  "Location: Damascus, سوريا.",
+  "Phone/WhatsApp: 09998841365.",
+  "Email: info@ElvioraJewelry.com.",
+  "Main categories: accessories (necklaces, earrings, bracelets), rings, sets, diversified.",
+  "Shipping: delivery داخل المدينة عادة خلال 2-4 أيام عمل حسب المنطقة.",
+  "Exchange: الاستبدال خلال 48 ساعة من الاستلام بشرط الحفاظ على الحالة الأصلية.",
+  "Payment: الدفع عند الاستلام داخل سوريا، ويمكن توفير طرق أخرى حسب الطلب."
+].join(" ");
 
 app.post("/api/chat", async (req, res) => {
   const message = String(req.body?.message || "").trim();
@@ -25,7 +43,7 @@ app.post("/api/chat", async (req, res) => {
   const payload = {
     model: MODEL,
     messages: [
-      { role: "system", content: SYSTEM_PROMPT },
+      { role: "system", content: `${SYSTEM_PROMPT} SYSTEM_FACTS: ${SYSTEM_FACTS}` },
       { role: "user", content: message }
     ],
     temperature: 0.4,
