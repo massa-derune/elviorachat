@@ -24,7 +24,7 @@ const SYSTEM_FACTS = [
   "Phone/WhatsApp: 09998841365.",
   "Email: info@ElvioraJewelry.com.",
   "Main categories: accessories (necklaces, earrings, bracelets), rings, sets, diversified.",
-  "Shipping: delivery داخل المدينة عادة خلال 2-4 أيام عمل حسب المنطقة.",
+  "Shipping: delivery داخل المدينة عادة خلال 2-4 أيام عمل حسب المنطقة وشحن للمحافظات السورية خلال 3-7 أيام عمل.",
   "Exchange: الاستبدال خلال 48 ساعة من الاستلام بشرط الحفاظ على الحالة الأصلية.",
   "Payment: الدفع عند الاستلام داخل سوريا، ويمكن توفير طرق أخرى حسب الطلب."
 ].join(" ");
