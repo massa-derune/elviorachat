@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: "https://elviorajewelry.lovestoblog.com", credentials: false }));
 app.use(express.json({ limit: "1mb" }));
 
 const PORT = process.env.PORT || 3000;
