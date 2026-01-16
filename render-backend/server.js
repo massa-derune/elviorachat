@@ -107,6 +107,16 @@ app.post("/api/chat", async (req, res) => {
     return res.status(500).json({ ok: false, error: "AI_FAILED" });
   }
 });
+// 🔍 DEBUG – مؤقت فقط
+app.get("/api/debug-key", (req, res) => {
+  const key = process.env.OPENROUTER_API_KEY || "";
+  res.json({
+    ok: true,
+    hasKey: !!key,
+    keyPrefix: key ? key.slice(0, 6) + "..." : "",
+    keyLength: key.length
+  });
+});
 
 app.get("/", (req, res) => {
   res.json({ ok: true, status: "ready" });
