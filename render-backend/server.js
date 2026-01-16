@@ -12,7 +12,7 @@ app.use(express.json({ limit: "1mb" }));
 
 const PORT = process.env.PORT || 3000;
 const API_URL = "https://openrouter.ai/api/v1/chat/completions";
-const MODEL = process.env.OPENROUTER_MODEL || "deepseek/deepseek-r1-0528:free";
+const MODEL = "openchat/openchat-3.5-0106";
 
 const PRODUCTS_URL =
   process.env.PRODUCTS_URL ||
