@@ -5,8 +5,12 @@
 
 const express = require("express");
 const cors = require("cors");
-const fetch = require("node-fetch"); // مهم جداً
-
+//const fetch = require("node-fetch"); // مهم جداً
+const response = await fetch(API_URL, {
+  method: "POST",
+  headers,
+  body: JSON.stringify(payload)
+});
 const app = express();
 
 /* ---------- CORS ---------- */
